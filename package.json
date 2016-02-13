@@ -31,9 +31,8 @@
   "scripts": {
     "start": "npm run build",
     "build": "git checkout stylus-utils && git pull -f origin stylus-utils && npm install && npm run clean && node utils/mkstylus && build-stylus && buld-stylus-min",
-    "clean": "rm -rf css && mkdir css",
-    "pre-push": "npm run build",
     "build-stylus": "./node_modules/stylus/bin/stylus -m  < bulma.styl > css/bulma.css",
-    "build-stylus-min": "./node_modules/stylus/bin/stylus -m -c  < bulma.styl > css/bulma.min.css"
+    "build-stylus-min": "./node_modules/stylus/bin/stylus -m -c  < bulma.styl > css/bulma.min.css",
+    "clean": "rm -rf css && mkdir css"
   }
 }
