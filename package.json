@@ -23,18 +23,17 @@
   },
   "devDependencies": {
     "captain-git-hook": "~1.0.5",
-    "node-sass": "~3.4.2",
+    "find-project-root": "^1.1.1",
+    "glob": "^7.0.0",
+    "sass2stylus": "^1.0.0",
     "stylus": "^0.53.0"
   },
   "scripts": {
-    "build": "npm run clean && npm run build-stylus && npm run build-stylus-min",
-    "watch": "npm run clean && ./node_modules/stylus/bin/stylus -m -w < bulma.styl > css/bulma.css",
-    "build-sass": "node-sass --output-style expanded --source-map true --output css/ bulma.sass --outFile css/bulma.css",
-    "build-stylus": "./node_modules/stylus/bin/stylus -m  < bulma.styl > css/bulma.css",
-    "build-sass-min": "node-sass --output-style compressed --source-map true --output css/ bulma.sass css/bulma.min.css",
-    "build-stylus-min": "./node_modules/stylus/bin/stylus -m -c  < bulma.styl > css/bulma.min.css",
+    "start": "npm run build",
+    "build": "git checkout stylus-utils && git pull -f origin stylus-utils && npm install && npm run clean && node utils/mkstylus && build-stylus && buld-stylus-min",
     "clean": "rm -rf css && mkdir css",
     "pre-push": "npm run build",
-    "start": "npm run watch"
+    "build-stylus": "./node_modules/stylus/bin/stylus -m  < bulma.styl > css/bulma.css",
+    "build-stylus-min": "./node_modules/stylus/bin/stylus -m -c  < bulma.styl > css/bulma.min.css"
   }
 }
